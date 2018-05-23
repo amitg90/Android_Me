@@ -16,6 +16,7 @@
 
 package com.example.android.android_me.ui;
 
+import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -23,10 +24,18 @@ import com.example.android.android_me.R;
 
 // This activity will display a custom Android image composed of three body parts: head, body, and legs
 public class AndroidMeActivity extends AppCompatActivity {
+    MyFragment myFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_android_me);
+
+        myFragment = new MyFragment();
+
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+
+        fragmentManager.beginTransaction().add(R.id.framelayout_id, myFragment).commit();
+
     }
 }
