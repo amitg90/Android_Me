@@ -26,9 +26,20 @@ import android.widget.ImageView;
 import com.example.android.android_me.R;
 import com.example.android.android_me.data.AndroidImageAssets;
 
+import java.util.List;
+
 public class BodyPartFragment extends Fragment {
+    List<Integer> mList;
+    int index;
 
     // TODO (1) Create a setter method and class variable to set and store of a list of image resources
+    public void setmList(List<Integer> list) {
+        mList = list;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
 
     // TODO (2) Create another setter method and variable to track and set the index of the list item to display
         // ex. index = 0 is the first image id in the given list , index 1 is the second, and so on
@@ -52,10 +63,11 @@ public class BodyPartFragment extends Fragment {
         ImageView imageView = (ImageView) rootView.findViewById(R.id.body_part_image_view);
 
         // Set the image to the first in our list of head images
-        imageView.setImageResource(AndroidImageAssets.getHeads().get(0));
-
         // TODO (3) If a list of image ids exists, set the image resource to the correct item in that list
         // Otherwise, create a Log statement that indicates that the list was not found
+        if (mList != null) {
+            imageView.setImageResource(mList.get(index));
+        }
 
         // Return the rootView
         return rootView;
